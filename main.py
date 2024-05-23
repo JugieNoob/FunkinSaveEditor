@@ -43,25 +43,21 @@ def updateDirInfo(info):
     canvas.create_window(35, 25, window=text)
     
     
+
     
 updateDirInfo("")   
 def loadRawData():
 
     filetypes = [("FNF Save File", "*.sol"), ("All Files", "*")]
     global rawdata 
+    global filename
     rawdata = tkfd.askopenfile(filetypes=filetypes)
     filename = rawdata.name
     rawdata = open(filename, "r")
     rawdata = rawdata.read()
-    #Remove all data that starts with zy from rawdata
-    #for i in range(0,len(datawithzy)):
-    #    if datawithzy[i] in rawdata:
-    #        rawdata.remove(datawithzy[i])
-    #        datawithzy[i] = "zy" + datawithzy[i]
 
     sh.fetchSongs(rawdata)
     updateDirInfo(filename)
-    sh.overwriteSongData(songnameinput.get(), songdifficultyinput.get(), songscoreinput.get(),savearray=rawdata)
     
     
     
@@ -70,28 +66,16 @@ createText(0, 200, "Song Difficulty:")
 createText(0, 250, "Score:")    
 
 
-
-
-
 songnameinput.insert(0,"Snake Eyes")
 songdifficultyinput.insert(0, "hard")
 
 
-
-                    
-    #Check if songname matches any data in the file
-   # if songname in songdata:
-    
-   # file = open(filename, "a")
-    #if in file.read()   
-    
 dirbtn = tk.Button(window,command=loadRawData,text="Save Directory")
 canvas.create_window(500,380, window=dirbtn, width=75, height=50)
     
 
 
-submitbtn = tk.Button(canvas,command=lambda: sh.createSongData(songname=songnameinput.get(), difficulty=songdifficultyinput.get(), score=songscoreinput.get(), savearray=rawdata),text="Update Save")
-#submitbtn = tk.Button(canvas,command=lambda: ,text="Update Save")
+submitbtn = tk.Button(canvas,command=lambda: sh.checkIfSongDataExists(songname=songnameinput.get(), difficulty=songdifficultyinput.get(), score=songscoreinput.get(), savearray=rawdata, dir=filename),text="Update Save")
 canvas.create_window(330,380, window=submitbtn, width=150, height=100)
 
 canvas.pack()

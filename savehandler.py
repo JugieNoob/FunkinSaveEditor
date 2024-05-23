@@ -5,6 +5,19 @@ datawithy = []
 savedata = []
 
 
+def updatefile(rawdata):
+    file = open(datadir, "w")
+    file.write(rawdata)
+    file.close()
+    print("Successfully wrote to " + datadir)
+
+def translateArraytoSave(savedata):
+    rawdata = ""
+    for i in range(0,len(savedata)):
+        rawdata = rawdata + savedata[i]
+        
+    updatefile(rawdata)
+
 def translateSaveToArray(rawdata):
     
     regex = "[z][ozh]y\d{1,2}:|[ozh]y\d{1,2}:|y\d{1,2}:"
@@ -32,7 +45,9 @@ def translateSaveToArray(rawdata):
     return savedata
 
 
-def overwriteSongData(songname, songdifficulty, score, savearray):
+def checkIfSongDataExists(songname, difficulty, score, savearray, dir):
+    global datadir
+    datadir = dir 
     indexofsongdata = 0    
     
     #Recreate song data 
@@ -44,7 +59,7 @@ def overwriteSongData(songname, songdifficulty, score, savearray):
             songname = songname + "-" + word
             
     songname = songname.lstrip("-")
-    songinfo = songname + "-" + songdifficulty
+    songinfo = songname + "-" + difficulty
     songdata = "y" + str(len(songinfo)) + ":" + songinfo + "i"
     print(songdata)
     
@@ -53,9 +68,17 @@ def overwriteSongData(songname, songdifficulty, score, savearray):
         if translateSaveToArray(savearray)[i].startswith(songdata):
             print("Found a match!")
             indexofsongdata = i
+            overwriteSongData(songdata, score, translateSaveToArray(savearray), indexofsongdata)
             break
+        else:
+            print("Could not find a matching song!\nCreating new data...")
             
-    
+def overwriteSongData(songdata, score, savearray, index):
+    savearray[index] = songdata + score
+    translateArraytoSave(savearray)
+
+def addToSongScore(songdata, score, savearray, index):
+    pass
             
 def createSongData(songname, difficulty, score, savearray):
     #Add Song to the data
