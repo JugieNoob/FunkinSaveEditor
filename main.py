@@ -21,6 +21,16 @@ window.resizable(False, False)
 window.title("Funkin' Save Editor")
 canvas = tk.Canvas(window, width=640, height=480, bg="White")
 
+
+songnameinput = tk.Entry(window)
+canvas.create_window(250,150,window=songnameinput)
+
+songdifficultyinput = tk.Entry(window)
+canvas.create_window(250,200,window=songdifficultyinput)
+
+songscoreinput = tk.Entry(window)
+canvas.create_window(250,250,window=songscoreinput)
+
 def createText(x:int, y:int, text:str):
     text = tk.Label(window, text=text, font=("VCR",16), anchor="w", width=15)
     canvas.create_window(x + 95, y,window=text)
@@ -50,7 +60,10 @@ def loadRawData():
     #        datawithzy[i] = "zy" + datawithzy[i]
 
     sh.fetchSongs(rawdata)
-    updateDirInfo(filename)  
+    updateDirInfo(filename)
+    sh.overwriteSongData(songnameinput.get(), songdifficultyinput.get(), songscoreinput.get(),savearray=rawdata)
+    
+    
     
 createText(0, 150, "Song Name:")
 createText(0, 200, "Song Difficulty:")
@@ -58,14 +71,7 @@ createText(0, 250, "Score:")
 
 
 
-songnameinput = tk.Entry(window)
-canvas.create_window(250,150,window=songnameinput)
 
-songdifficultyinput = tk.Entry(window)
-canvas.create_window(250,200,window=songdifficultyinput)
-
-songscoreinput = tk.Entry(window)
-canvas.create_window(250,250,window=songscoreinput)
 
 songnameinput.insert(0,"Snake Eyes")
 songdifficultyinput.insert(0, "hard")
@@ -84,13 +90,9 @@ canvas.create_window(500,380, window=dirbtn, width=75, height=50)
     
 
 
-submitbtn = tk.Button(canvas,command=lambda: sh.updSave(songname=songnameinput.get(), difficulty=songdifficultyinput.get(), score=songscoreinput.get(), savearray=rawdata),text="Update Save")
+submitbtn = tk.Button(canvas,command=lambda: sh.createSongData(songname=songnameinput.get(), difficulty=songdifficultyinput.get(), score=songscoreinput.get(), savearray=rawdata),text="Update Save")
+#submitbtn = tk.Button(canvas,command=lambda: ,text="Update Save")
 canvas.create_window(330,380, window=submitbtn, width=150, height=100)
-
-
-
-
-
 
 canvas.pack()
 window.mainloop()
