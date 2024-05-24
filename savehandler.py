@@ -6,7 +6,7 @@ def updatefile(rawdata):
     file = open(datadir, "w")
     file.write(rawdata)
     file.close()
-    mb.showinfo("Save Data Updated!", "Successfully wrote new save data to " + datadir)
+    mb.showinfo("Funkin' Save Editor: Save Data Updated!", "Successfully wrote new save data to " + datadir)
 
 def translateArraytoSave(savedata):
     rawdata = ""
@@ -61,7 +61,6 @@ def checkIfSongDataExists(songname, difficulty, score, savearray, dir):
     songinfo = songname + "-" + difficulty
     songdata = "y" + str(len(songinfo)) + ":" + songinfo + "i"
     
-    print(len(translateSaveToArray(savearray)))
     #Check the position of the song data
     for i in range(0, len(translateSaveToArray(savearray))):
         if translateSaveToArray(savearray)[i].startswith(songdata):
@@ -125,7 +124,6 @@ def fetchSongs(rawdata, index):
         if not translateSaveToArray(rawdata)[i].startswith("zhy"):
             numberofsongs = i
         else:
-            print(numberofsongs)
             break
 
         

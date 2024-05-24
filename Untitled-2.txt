@@ -8,3 +8,9 @@ zy9:Dadbattlezh (if song ends in zh it means its the end of the song scores arra
 regexr.com/80nv6
 
 if savefile ends in a colon then the thing will just crash
+
+TODO: Add Menu Bar
+
+pip install requests
+
+pip install PyGithub
