@@ -30,3 +30,9 @@
 
   4. Open a terminal window and run the following command 
   ``python main.py``
+
+   **If the program does not compile, try whitelisting the folder that contains the program in your antivirus**
+
+  5. Run the exe file in the dist folder that appeared in the project directory
+
+  
