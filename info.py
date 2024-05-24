@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 import webbrowser
+import exehelper as exe
 
 curversion = "1.0.0"
 
@@ -12,12 +13,12 @@ def openTwitter():
 def loadInfoWindow(event=None):
     infowin = tk.Toplevel()
     infowin.title("Funkin' Save Editor: Information")
-    infowin.iconbitmap("images/icon-hole.ico")
+    infowin.iconbitmap(exe.resource_path("icon-hole.ico"))
     
     canvas = tk.Canvas(infowin, width=370, height=320, bg="White")
     infowin.resizable(False, False)
     
-    logo = Image.open("images/icon-hole.png")
+    logo = Image.open(exe.resource_path("icon-hole.ico"))
     logo = logo.resize(size=(200, 200), resample=Image.Resampling.BILINEAR)
     logo = ImageTk.PhotoImage(logo)
     
@@ -28,14 +29,14 @@ def loadInfoWindow(event=None):
     
     canvas.create_text(175, 40, text=curversion, font=("",10), anchor="center")
     
-    githublogo = Image.open("images/github.png")
+    githublogo = Image.open(exe.resource_path("github.png"))
     githublogo = githublogo.resize(size=(50, 50), resample=Image.Resampling.BILINEAR)
     githublogo = ImageTk.PhotoImage(githublogo)   
     
     githubbtn = tk.Button(infowin, image=githublogo, command=openGithub)
     canvas.create_window(35, 290, window=githubbtn)
     
-    twitterlogo = Image.open("images/twitter.png")
+    twitterlogo = Image.open(exe.resource_path("twitter.png"))
     twitterlogo = twitterlogo.resize(size=(50, 50), resample=Image.Resampling.BILINEAR)
     twitterlogo = ImageTk.PhotoImage(twitterlogo)   
     

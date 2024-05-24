@@ -3,7 +3,7 @@ import tkinter.filedialog as tkfd
 import savehandler as sh
 import updater
 import info
-
+import exehelper as exe
 
 #TODO: MOVE AWAY FROM USING GRIDS AND USE TKINTER'S GRID SYSTEM https://www.tutorialspoint.com/align-buttons-and-labels-in-each-row-with-tkinter
 
@@ -17,7 +17,7 @@ difficulty = ""
 filename = "No directory"
 
 window = tk.Tk()
-window.iconbitmap("images/icon-hole.ico")
+window.iconbitmap(exe.resource_path("icon-hole.ico"))
 window.resizable(False, False)
 window.title("Funkin' Save Editor")
 canvas = tk.Canvas(window, width=640, height=480, bg="White")
