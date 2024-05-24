@@ -90,6 +90,7 @@ def loadRawData():
     filename = rawdata.name
     rawdata = open(filename, "r")
     rawdata = rawdata.read()
+    dirinfo.delete(0, tk.END)
     dirinfo.insert(tk.INSERT, filename)
     
     sh.fetchSongs(rawdata , 0)

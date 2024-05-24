@@ -1,4 +1,3 @@
-import requests
 import webbrowser
 import info
 import tkinter.messagebox as mb
