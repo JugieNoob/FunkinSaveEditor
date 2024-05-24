@@ -35,4 +35,10 @@
 
   5. Run the exe file in the dist folder that appeared in the project directory
 
-  
+## How to compile the project into an exe file
+
+ 1. Run ```converttoexe.bat```.
+
+ 2. When prompted to, press ``D``
+
+    - When done, the compiled program can be found in the ``dist`` folder.
