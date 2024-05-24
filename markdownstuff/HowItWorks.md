@@ -4,19 +4,24 @@
   
   ### Take "y12:Bopeebo-hardi25310" as an example.
 
-  - **y** is the separator character that separates one piece of data from another, sometimes one or two more characters can be found before the separator character such as **"o"**, **"z"** or **"h"**.
+  - **y** is the separator character that separates one piece of data from another, sometimes one or two more characters can be found before the separator character such as **"o"**, **"z"** or **"h"**. **This is shown with red on the example below.**
 
-  - **12** is the length of the songname and the difficulty **(including the -).**
+  - **12** is the length of the songname and the difficulty **(including the - ).** **This is shown with orange on the example below.**
 
-  - **:** is the character that separates the **y12** data from the rest of the data.
+  - **:** is the character that separates the **y12** data from the rest of the data. **This is shown with yellow on the example below.**
 
-  - **Bopeebo** is the name of the song that the data belongs to.
+  - **Bopeebo** is the name of the song that the data belongs to. **This is shown with lime on the example below.**
 
-  - **-hard** is the difficulty of the song.
+  - **-hard** is the difficulty of the song. **This is shown with green on the example below.**
 
-  - **i** shows that the next piece of data is going to be an integer value.
+  - **i** shows that the next piece of data is going to be an integer value.**This is shown with blue on the example below.**
 
-  - **25310** is the score of the song that you got.
+  - **25310** is the score of the song that you got. **This is shown with dark blue on the example below.**
+
+  <p align="center">
+  <img width="50%" height="50%"  
+  src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/markdownstuff/image/dataexample.png">
+  </p>
 
 ## The Save Editor
 

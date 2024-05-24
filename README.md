@@ -3,7 +3,7 @@ Funkin' Save Editor is a save editor for Friday Night Funkin' built with Python 
 - **This tool only works with legacy FNF builds (builds before 0.3.0)**  
 <p align="center">
   <img width="50%" height="50%"  
-  src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/images/markdownstuff/images/dingus.png">
+  src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/markdownstuff/images/dingus.png">
 </p>
 
 
