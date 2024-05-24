@@ -22,6 +22,9 @@
   <img width="50%" height="50%"  
   src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/markdownstuff/images/dataexample.png">
   </p>
+  
+  
+  **Font taken from [FNF font (PhantomMuff)](https://gamebanana.com/tools/7763) on GameBanana**
 
 ## The Save Editor
 
