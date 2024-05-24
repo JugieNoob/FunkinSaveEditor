@@ -8,6 +8,9 @@ Funkin' Save Editor is a save editor for Friday Night Funkin' built with Python 
 
 ### DISCLAIMER: Make a back-up of your save data before using the program! 
 
+**Also available to download on GameBanana:** <br>
+<a href="https://gamebanana.com/tools/16997"><img src="https://gamebanana.com/tools/embeddables/16997?type=large"/></a>
+
 ## How to use
   1. Press the **...** button next to the directory bar and find the save file you want to edit (FNF Save Files are found in **%appdata%** on windows).
        <p align="center">
