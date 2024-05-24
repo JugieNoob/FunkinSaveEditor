@@ -20,7 +20,7 @@
 
   <p align="center">
   <img width="50%" height="50%"  
-  src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/markdownstuff/image/dataexample.png">
+  src="https://github.com/JugieNoob/FunkinSaveEditor/blob/main/markdownstuff/images/dataexample.png">
   </p>
 
 ## The Save Editor
