@@ -14,7 +14,7 @@
 
   - **-hard** is the difficulty of the song. **(green)**
 
-  - **i** shows that the next piece of data is going to be an integer value.**(blue)**
+  - **i** shows that the next piece of data is going to be an integer value. **(blue)**
 
   - **25310** is the score of the song that you got. **(dark blue)**
 
