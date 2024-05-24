@@ -91,7 +91,9 @@ def loadRawData():
     rawdata = open(filename, "r")
     rawdata = rawdata.read()
     dirinfo.delete(0, tk.END)
+    songListUI.delete(0, tk.END)
     dirinfo.insert(tk.INSERT, filename)
+    
     
     sh.fetchSongs(rawdata , 0)
     for i in range(sh.songScoreindex + 1, sh.numberofsongs):
