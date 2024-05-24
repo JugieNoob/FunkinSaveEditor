@@ -1,15 +1,12 @@
 import re
-
-datawithzy = []
-datawithy = []
-savedata = []
+import tkinter.messagebox as mb
 
 
 def updatefile(rawdata):
     file = open(datadir, "w")
     file.write(rawdata)
     file.close()
-    print("Successfully wrote to " + datadir)
+    mb.showinfo("Save Data Updated!", "Successfully wrote new save data to " + datadir)
 
 def translateArraytoSave(savedata):
     rawdata = ""
@@ -23,6 +20,8 @@ def translateSaveToArray(rawdata):
     regex = "[z][ozh]y\d{1,2}:|[ozh]y\d{1,2}:|y\d{1,2}:"
     prefixarray = re.findall(regex, rawdata)
     
+    rawdata = checkForSaveProblems(rawdata)
+        
     #Split the data into an array
     savedata = rawdata.split(":")
     for i in range(0, len(savedata)):
@@ -61,23 +60,32 @@ def checkIfSongDataExists(songname, difficulty, score, savearray, dir):
     songname = songname.lstrip("-")
     songinfo = songname + "-" + difficulty
     songdata = "y" + str(len(songinfo)) + ":" + songinfo + "i"
-    print(songdata)
     
+    print(len(translateSaveToArray(savearray)))
     #Check the position of the song data
     for i in range(0, len(translateSaveToArray(savearray))):
         if translateSaveToArray(savearray)[i].startswith(songdata):
             print("Found a match!")
             indexofsongdata = i
             overwriteSongData(songdata, score, translateSaveToArray(savearray), indexofsongdata)
+            
             break
-        else:
+        elif i + 1== len(translateSaveToArray(savearray)):
             print("Could not find a matching song!\nCreating new data...")
+            addToSongScore(songdata, translateSaveToArray(savearray))
             
 def overwriteSongData(songdata, score, savearray, index):
     savearray[index] = songdata + score
     translateArraytoSave(savearray)
 
-def addToSongScore(songdata, score, savearray, index):
+def addToSongScore(songdata, savearray):
+    for i in range(0, len(savearray)):
+        if savearray[i].endswith("songScoresb"):
+            songScoreindex = i
+            break
+    savearray.insert(songScoreindex + 1, songdata)
+    
+    translateArraytoSave(savearray)
     pass
             
 def createSongData(songname, difficulty, score, savearray):
@@ -102,17 +110,33 @@ def createSongData(songname, difficulty, score, savearray):
     print("Score: " + score)
     print("\nFinal Data: " + finaldata)
 
-def fetchSongs(rawdata):
-    songScoreindex = 0
-    translateSaveToArray(rawdata)
-    
+    addToSongScore(finaldata, savearray)
 
-    for i in range(0, len(savedata)):
-        if savedata[i].endswith("songScoresb"):
+def fetchSongs(rawdata, index):
+    global songScoreindex
+    global fetchSongName
+    global numberofsongs
+    numberofsongs = len(translateSaveToArray(rawdata))
+    for i in range(0, len(translateSaveToArray(rawdata))):
+        if translateSaveToArray(rawdata)[i].endswith("songScoresb"):
             songScoreindex = i
             break
-    for i in range(songScoreindex, len(savedata)):
-        if not savedata[i].startswith("zhy"):
-            print(savedata[i])
+    for i in range(songScoreindex, len(translateSaveToArray(rawdata))):
+        if not translateSaveToArray(rawdata)[i].startswith("zhy"):
+            numberofsongs = i
         else:
+            print(numberofsongs)
             break
+
+        
+    fetchSongName = translateSaveToArray(rawdata)[index]
+    return 
+        
+def checkForSaveProblems(rawdata):
+    if rawdata.endswith(":"):
+        rawdata = rawdata[:-1]
+        
+    return rawdata    
+
+
+
